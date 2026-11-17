@@ -1,0 +1,5 @@
+﻿01_demarrage.png : Montant=0 Resultat=
+02_120_USD_EUR.png : Montant=120 Resultat=102.56
+03_100_EUR_TND.png : Montant=100 Resultat=340.00
+04_50_GBP_USD.png : Montant=50 Resultat=67.24
+05_10_EUR_EUR.png : Montant=10 Resultat=10.00

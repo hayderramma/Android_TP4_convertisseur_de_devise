@@ -1,0 +1,93 @@
+﻿<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Compte rendu - CurrencyConverter</title>
+<style>
+@page { size: A4; margin: 12mm; }
+body { font-family: "Segoe UI", Arial, sans-serif; font-size: 10pt; color: #222; }
+h1 { color: #1BA6C9; margin: 0 0 4mm 0; font-size: 22pt; }
+h2 { color: #2BB8E8; font-size: 13pt; margin: 5mm 0 2mm 0; }
+h3 { font-size: 11pt; margin: 3mm 0 1mm 0; }
+p { margin: 0 0 2mm 0; text-align: justify; }
+ul { margin: 0 0 2mm 0; }
+.page { page-break-after: always; }
+.page:last-child { page-break-after: auto; }
+.sous-titre { color: #555; margin-bottom: 6mm; }
+table { border-collapse: collapse; width: 100%; margin: 2mm 0 4mm 0; }
+th, td { border: 1px solid #bbb; padding: 1.5mm; text-align: center; }
+th { background: #e8f7fb; }
+.code { background: #f4f4f4; border-left: 3px solid #1BA6C9; padding: 2mm; font-family: Consolas, monospace; font-size: 8.5pt; }
+.galerie { display: flex; flex-wrap: wrap; gap: 4mm; justify-content: center; align-items: flex-start; }
+.figure { text-align: center; }
+.figure img { width: 42mm; border: 1px solid #ccc; }
+.figure p { font-size: 8pt; margin-top: 1mm; text-align: center; }
+</style>
+</head>
+<body>
+<div class="page">
+<h1>CurrencyConverter</h1>
+<p class="sous-titre">Compte rendu de TP Android Kotlin - Convertisseur de devises</p>
+
+<h2>1. Presentation</h2>
+<p>L'application convertit un montant saisi d'une devise source vers une devise cible a partir de taux fixes. Elle est developpee en Kotlin avec Android Studio, avec un SDK minimum API 24 et le View Binding active. Le projet se compose d'une seule Activity (MainActivity) et d'un seul layout (activity_main.xml).</p>
+
+<h2>2. Choix d'interface</h2>
+<p>La zone d'affichage occupe environ 45 % de la hauteur. Un Guideline horizontal place a 45 % separe cette zone du clavier. Un View bleu turquoise (code #2BB8E8) sert de fond a la zone haute, tandis que le clavier utilise un fond clair.</p>
+<p>Le titre, le montant et le resultat sont des TextView. Le montant et le resultat sont alignes a droite, en 48sp, et soulignes grace a un drawable layer-list place en background. Les deux Spinner sont alimentes par un ArrayAdapter construit depuis le string-array devises. Le bouton d'inversion est un ImageButton utilisant un vector drawable.</p>
+<p>Le clavier est un TableLayout de 4 TableRow et 3 colonnes. Chaque touche est un Button sans bordure, en 32sp. Les chiffres sont bleu #1BA6C9 et la touche C est rouge #F0727A. Tous les textes sont dans strings.xml, les couleurs dans colors.xml et les dimensions dans dimens.xml. L'ecran est bloque en portrait dans le manifeste.</p>
+
+<div class="galerie">
+<div class="figure"><img src="../screenshots/01_demarrage.png" alt="Ecran au demarrage"><p>Ecran au demarrage</p></div>
+</div>
+</div>
+<div class="page">
+<h2>3. Logique de conversion</h2>
+<p>Les taux sont stockes dans une Map Kotlin declaree dans MainActivity. Ils representent la valeur d'une devise pour 1 EUR. La conversion passe par l'euro comme devise pivot :</p>
+<div class="code">montantEnEur = montant / tauxSource
+resultat = montantEnEur * tauxCible</div>
+<p>Le resultat est formate avec String.format et Locale.US pour garantir un point decimal, puis affiche dans tvResultat. Quand source et cible sont identiques, le calcul redonne exactement le montant initial.</p>
+
+<h2>4. Regles de gestion</h2>
+<ul>
+<li>Le montant initial vaut 0 et le premier chiffre tape le remplace.</li>
+<li>Un seul point decimal est accepte ; une deuxieme pression sur le point est ignoree.</li>
+<li>La saisie est limitee a 10 caracteres.</li>
+<li>La touche C remet le montant a 0 et vide le resultat.</li>
+<li>Si le montant vaut 0, le clic sur Convertir affiche un Toast.</li>
+<li>Le bouton d'inversion echange les deux Spinner et relance la conversion si un resultat existe.</li>
+</ul>
+
+<h2>5. Bonus</h2>
+<p>La conversion est relancee automatiquement a chaque frappe et a chaque changement de devise grace a un OnItemSelectedListener. Le bouton Convertir reste fonctionnel et affiche le Toast en cas de montant nul.</p>
+</div>
+<div class="page">
+<h2>6. Tests effectues</h2>
+<table>
+<tr><th>Montant</th><th>Source</th><th>Cible</th><th>Resultat attendu</th><th>Resultat obtenu</th></tr>
+<tr><td>120</td><td>USD</td><td>EUR</td><td>102.56</td><td>102.56</td></tr>
+<tr><td>100</td><td>EUR</td><td>TND</td><td>340.00</td><td>340.00</td></tr>
+<tr><td>50</td><td>GBP</td><td>USD</td><td>67.24</td><td>67.24</td></tr>
+<tr><td>10</td><td>EUR</td><td>EUR</td><td>10.00</td><td>10.00</td></tr>
+</table>
+
+<div class="galerie">
+<div class="figure"><img src="../screenshots/02_120_USD_EUR.png" alt="120 USD vers EUR"><p>120 USD vers EUR</p></div>
+<div class="figure"><img src="../screenshots/03_100_EUR_TND.png" alt="100 EUR vers TND"><p>100 EUR vers TND</p></div>
+<div class="figure"><img src="../screenshots/04_50_GBP_USD.png" alt="50 GBP vers USD"><p>50 GBP vers USD</p></div>
+</div>
+</div>
+<div class="page">
+<div class="galerie">
+<div class="figure"><img src="../screenshots/05_10_EUR_EUR.png" alt="10 EUR vers EUR"><p>10 EUR vers EUR</p></div>
+</div>
+
+<h2>7. Difficulites rencontrees</h2>
+<p>La principale difficulite etait liee a la version d'Android Gradle Plugin. AGP 9 integre desormais la compilation Kotlin : l'ancien plugin org.jetbrains.kotlin.android provoquait une erreur de conflit d'extension. Il a donc ete retire du projet.</p>
+<p>Une autre difficulite etait l'alignement du montant et du resultat avec les Spinner dans la zone turquoise. L'utilisation des contraintes de baseline et d'un drawable de soulignement a permis d'obtenir un rendu stable.</p>
+
+<h2>8. Conclusion</h2>
+<p>L'application respecte l'ensemble des objectifs du TP. La conversion est correcte pour les quatre cas de test, le clavier personnalise fonctionne sans clavier systeme et le bouton d'inversion recalcule le resultat. Le bonus de conversion automatique est egalement implemente.</p>
+</div>
+</body>
+</html>
