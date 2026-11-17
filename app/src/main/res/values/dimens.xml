@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="partie_zone_haute" type="dimen" format="float">0.45</item>
+
+    <dimen name="marge_titre_haut">16dp</dimen>
+    <dimen name="taille_titre">20sp</dimen>
+    <dimen name="marge_horizontale">24dp</dimen>
+    <dimen name="largeur_spinner">112dp</dimen>
+    <dimen name="marge_apres_titre">20dp</dimen>
+    <dimen name="marge_entre">12dp</dimen>
+    <dimen name="taille_valeur">48sp</dimen>
+    <dimen name="padding_soulignement">8dp</dimen>
+    <dimen name="taille_bouton_inverser">48dp</dimen>
+    <dimen name="marge_inverser">8dp</dimen>
+    <dimen name="marge_apres_inverser">8dp</dimen>
+    <dimen name="marge_convertir">16dp</dimen>
+    <dimen name="marge_convertir_bas">12dp</dimen>
+    <dimen name="taille_touche">32sp</dimen>
+    <dimen name="epaisseur_soulignement">2dp</dimen>
+    <dimen name="rayon_spinner">4dp</dimen>
+    <dimen name="padding_spinner">8dp</dimen>
+</resources>

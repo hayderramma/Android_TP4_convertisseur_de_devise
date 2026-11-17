@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Ligne blanche servant de soulignement au montant et au résultat. -->
+    <item android:gravity="bottom">
+        <shape android:shape="rectangle">
+            <size android:height="@dimen/epaisseur_soulignement" />
+            <solid android:color="@color/soulignement" />
+        </shape>
+    </item>
+</layer-list>

@@ -1,0 +1,20 @@
+# Fichiers générés par Gradle / Android Studio
+.gradle/
+build/
+*/build/
+.local/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Configuration locale et IDE
+local.properties
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Système
+.DS_Store
+Thumbs.db

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CurrencyConverter</string>
+    <string name="titre_convertisseur">Currency Converter</string>
+
+    <!-- Valeurs affichées et messages -->
+    <string name="montant_initial">0</string>
+    <string name="resultat_initial" />
+    <string name="format_resultat">%1$.2f</string>
+    <string name="bouton_convertir">Convertir</string>
+    <string name="toast_montant_vide">Veuillez saisir un montant</string>
+
+    <!-- Accessibilité -->
+    <string name="description_bouton_inverser">Inverser les devises</string>
+    <string name="description_devise_source">Devise source</string>
+    <string name="description_devise_cible">Devise cible</string>
+
+    <!-- Liste des devises proposées dans les deux Spinner -->
+    <string-array name="devises">
+        <item>USD</item>
+        <item>EUR</item>
+        <item>TND</item>
+        <item>GBP</item>
+        <item>JPY</item>
+        <item>CAD</item>
+    </string-array>
+
+    <!-- Touches du clavier numérique personnalisé -->
+    <string name="touche_0">0</string>
+    <string name="touche_1">1</string>
+    <string name="touche_2">2</string>
+    <string name="touche_3">3</string>
+    <string name="touche_4">4</string>
+    <string name="touche_5">5</string>
+    <string name="touche_6">6</string>
+    <string name="touche_7">7</string>
+    <string name="touche_8">8</string>
+    <string name="touche_9">9</string>
+    <string name="touche_point">.</string>
+    <string name="touche_effacer">C</string>
+</resources>
